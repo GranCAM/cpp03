@@ -12,7 +12,6 @@ int main()
 	clap1.attack("target1");
 	clap1.takeDamage(5);
 	clap1.beRepaired(3);
-	clap1.status();
 	
 	std::cout << "\n=== Creating ScavTrap ===" << std::endl;
 	ScavTrap scav1("Scavvy");
@@ -23,16 +22,13 @@ int main()
 	scav1.takeDamage(10);
 	scav1.beRepaired(5);
 	scav1.guardGate();
-	scav1.status();
 	
 	std::cout << "\n=== Testing Copy Constructor ===" << std::endl;
 	ScavTrap scav3(scav1);
-	scav3.status();
 	
 	std::cout << "\n=== Testing Assignment Operator ===" << std::endl;
 	ScavTrap scav4;
 	scav4 = scav1;
-	scav4.status();
 	
 	std::cout << "\n=== Destruction Order ===" << std::endl;
 	return 0;

@@ -16,6 +16,8 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 	std::cout << "ScavTrap " << this->name << " constructed." << std::endl;
 }
 
+
+
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	std::cout << "ScavTrap " << this->name << " copy constructed." << std::endl;
@@ -28,18 +30,21 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 	return *this;
 }
 
+
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << this->name << " destructed." << std::endl;
 }
+
+
 
 void ScavTrap::attack(const std::string &target)
 {
 	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
 		this->energyPoints--;
-		std::cout << "ScavTrap " << this->name << " attacks " << target 
-		          << ", causing " << this->attackDamage << " points of damage!" << std::endl;
+		std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
 	}
 	else if (this->hitPoints <= 0)
 		std::cout << "ScavTrap " << this->name << " cannot attack because it has no hit points left." << std::endl;

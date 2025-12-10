@@ -1,25 +1,25 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackDamage(0) 
+ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "ClapTrap " << this->name << " constructed." << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string &name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0) 
+ClapTrap::ClapTrap(const std::string &name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "ClapTrap " << this->name << " constructed." << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other) 
+ClapTrap::ClapTrap(const ClapTrap &other)
 {
 	*this = other;
 	std::cout << "ClapTrap " << this->name << " copy constructed." << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other) 
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
-	if (this != &other) 
+	if (this != &other)
 	{
 		this->name = other.name;
 		this->hitPoints = other.hitPoints;
@@ -29,32 +29,32 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 	return *this;
 }
 
-ClapTrap::~ClapTrap() 
+ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << this->name << " destructed." << std::endl;
 }
 
-void ClapTrap::attack(const std::string &target) 
+void ClapTrap::attack(const std::string &target)
 {
-	if (this->energyPoints > 0 && this->hitPoints > 0) 
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
 		this->energyPoints--;
 		std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
-	} 
-	else if (this->hitPoints <= 0) 
+	}
+	else if (this->hitPoints <= 0)
 		std::cout << "ClapTrap " << this->name << " cannot attack because it has no hit points left." << std::endl;
 	else if (this->energyPoints <= 0)
 		std::cout << "ClapTrap " << this->name << " has insufficient energy to attack." << std::endl;
 }
 
-void ClapTrap::takeDamage(unsigned int amount) 
+void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->hitPoints <= amount) 
+	if (this->hitPoints <= amount)
 	{
 		this->hitPoints = 0;
 		std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage and is now destroyed!" << std::endl;
-	} 
-	else 
+	}
+	else
 	{
 		this->hitPoints -= amount;
 		std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage, remaining hit points: " << this->hitPoints << "." << std::endl;
